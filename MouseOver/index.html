@@ -116,9 +116,8 @@ div#svg_list{
 
             list-style-type:none;
         }
-        div#svg_list li:first-child(){
-            background-color: blue; /*#e1e1e1*/
-            color: blue;
+        div#svg_list a:nth-child(2n) > li{
+            background-color: #E1E1E1;
         }
 
 
@@ -360,7 +359,8 @@ var tux = Snap.load("lmfdbmap1cropped4.svg", function ( loadedFragment ) {
 
     //Optional deselect function
     //FIXME
-    s.select( "#rect3163" ).click( function() {
+    /*
+    s.select( ":not(#rect3163)" ).click( function() {
 
             s.select( clickID ).attr({"fill-opacity": 1.0});
             clickID = "";
@@ -368,7 +368,7 @@ var tux = Snap.load("lmfdbmap1cropped4.svg", function ( loadedFragment ) {
             fillNewInformation( "", "", "");
         }
     );
-
+*/
 
 
 } );
@@ -391,11 +391,14 @@ var fillNewInformation = function ( description_text, description_list, descript
 
   if(split_list.length > 1){  //If more than one item, i.e. a single space.
       list_html.innerHTML = "<p>Examples</p>";
-      list_html.innerHTML += "<ul>";
+
+      var temp_string = "";
+      console.log( temp_string , list_html);
       for(i = 0; i < split_list.length; i++){
-          list_html.innerHTML = list_html.innerHTML + "<a href=\"" + split_list_links[i] + "\">" + "<li>" + split_list[i] + "</li>" + "</a>";
+          temp_string = temp_string + "<a href=\"" + split_list_links[i] + "\">\n" + "<li>" + split_list[i] + "</li>\n" + "</a>\n";
       };
-      list_html.innerHTML += "</ul>";
+      list_html.innerHTML += "<ul>" + temp_string + "</ul>"
+
   } else {
     list_html.innerHTML = " ";
   }
@@ -470,7 +473,7 @@ var svg_element_mouse_dblclick = function ( url ) {
 
 
 </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 
