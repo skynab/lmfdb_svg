@@ -393,7 +393,6 @@ var fillNewInformation = function ( description_text, description_list, descript
       list_html.innerHTML = "<p>Examples</p>";
 
       var temp_string = "";
-      console.log( temp_string , list_html);
       for(i = 0; i < split_list.length; i++){
           temp_string = temp_string + "<a href=\"" + split_list_links[i] + "\">\n" + "<li>" + split_list[i] + "</li>\n" + "</a>\n";
       };
@@ -408,6 +407,7 @@ var fillNewInformation = function ( description_text, description_list, descript
 // Function for what happens when the mouse goes over an object.
 var svg_element_mouse_in = function ( svg_element_id, description_text, description_list, description_list_link ) {
     return function() {
+        /*
         if( clickID != svg_element_id){
           //Turns the opacity of target svg object down
           s.select( svg_element_id ).attr({"fill-opacity": 0.7});
@@ -416,13 +416,14 @@ var svg_element_mouse_in = function ( svg_element_id, description_text, descript
         if( clickSwitch == 0 ){
           fillNewInformation( description_text, description_list, description_list_link);
         }
-
+        */
     };
 };
 
 // Function for what happens when the mouse stops being over an object.
 var svg_element_mouse_out = function ( svg_element_id ) {
     return function() {
+        /*
         if( clickID != svg_element_id){
           //Turns the opacity of target svg object back to full
           s.select( svg_element_id ).attr({"fill-opacity": 1.0});
@@ -433,6 +434,7 @@ var svg_element_mouse_out = function ( svg_element_id ) {
           document.getElementById( svg_desc ).innerHTML = "";
           document.getElementById( svg_list ).innerHTML = "";
         }
+        */
     };
 };
 
@@ -444,9 +446,11 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
           clickSwitch = 1;
           clickID = svg_element_id;
           s.select( svg_element_id ).attr({"fill-opacity": 0.6});
+          fillNewInformation( description_text, description_list, description_list_link);
 
         } else if(clickSwitch == 1 && clickID == svg_element_id) {
-          window.location.href = url;
+          clickSwitch = 0
+          fillNewInformation( "", "", "");
 
         } else if( clickSwitch == 1 && clickID != svg_element_id) {
 
@@ -467,7 +471,7 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
 var svg_element_mouse_dblclick = function ( url ) {
     return function() {
         //Goes to URL on click
-        window.location.href = url;
+        //window.location.href = url;
     };
 };
 
