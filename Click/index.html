@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dual Info Style</title>
+</head>
+
+<body>
+
+<div class="unnecessary">
+<h2>The LMFDB universe.</h2>
+
+
+<div id="svg_main">
+    <!-- SVG + Description Boxes -->
+    <div id="lmdfb_map"></div>
+	<div id="svg_description"></div>
+    <div id="svg_list"></div>
+</div>
+
+<!--
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare condimentum ligula, laoreet ultrices ante convallis vitae. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam vulputate porta consequat. Maecenas ultricies nulla tincidunt ex varius faucibus. Donec vitae massa et massa aliquam congue. Donec id laoreet tellus, eget fringilla nulla. Phasellus tincidunt justo sed ex faucibus pellentesque. Nam venenatis lectus sed felis pulvinar elementum. Aenean placerat ut velit vel cursus. Quisque massa dui, accumsan non velit at, cursus fermentum risus. Nunc tristique tristique massa eu mattis. Suspendisse potenti. Integer consequat auctor malesuada.
+    <br>
+    Vivamus nec risus id lectus fringilla suscipit. Sed viverra tortor a nibh eleifend interdum. Donec sed volutpat lacus, vitae facilisis urna. Mauris justo nisl, dignissim sed interdum vitae, euismod sit amet nibh. Phasellus vel nibh at lorem dignissim blandit quis ut dolor. Nulla facilisi. Vestibulum vestibulum pharetra libero, nec mattis ipsum finibus at. Proin leo ipsum, condimentum a enim eu, ultrices eleifend lorem.
+    <br>
+    Cras volutpat, urna nec ultricies tempus, libero purus interdum velit, tempus tempor risus eros tempus urna. Proin gravida lorem eget rutrum consequat. Sed laoreet ex lorem, tempus dapibus diam feugiat non. Nunc porta eleifend blandit. Vestibulum pellentesque felis eget ultricies ultricies. Vivamus in quam id lectus luctus consequat. Etiam scelerisque auctor nibh, at hendrerit ex. Phasellus eu mauris facilisis, lobortis ligula a, scelerisque mauris. Phasellus eget malesuada arcu. Suspendisse nec est vitae turpis consequat elementum non vel odio.
+</p>
+-->
+
+</div>
+
+<style>
+
+div#svg_main
+{
+    /*background-color: yellow;*/
+    position        : relative;
+    padding         : 0 0 8% 0;
+}
+
+
+div#svg_description{
+    /*background-color: #E8E8E8;*/
+    position: absolute;
+    top: 76%;
+    left: 0;
+    width: 38%;
+    height: 135px;
+    margin: 0;
+    padding: 0 1%;
+    font-family: Verdana,sans-serif;
+
+	font-family		: Verdana, sans-serif;
+    text-align      : left;
+}
+div#svg_description p:first-child{
+    margin			: 5px 0;
+    padding			: 0;
+    border			: 0;
+    font-weight     : 600;
+    text-align      : center;
+}
+div#svg_description p:last-child{
+    margin			: 0;
+    padding			: 0;
+    border			: 0;
+    font-weight     : 400;
+    text-align      : left;
+}
+
+
+
+div#svg_list{
+    /*background-color: pink;*/
+    position: absolute;
+    top: 76%;
+    right: 0;
+    width: 38%;
+    height: 100px;
+    margin: 0 1%;
+    padding: 0 0 4% 0;
+    font-family: Verdana,sans-serif;
+
+	font-family		: Verdana, sans-serif;
+    text-align      : center;
+}
+
+/*
+div#svg_list{
+    background-color: rgba(240, 240, 240, 0.1);
+}*/
+    div#svg_list p{
+        margin			: 5px 0;
+        padding			: 0;
+        border			: 0;
+        font-weight     : 600;
+    }
+
+    div#svg_list ul{
+        margin			: 0;
+        padding			: 0em;
+        border			: 0;
+        list-style-type:none;
+    }
+        div#svg_list li{
+            margin			: 0;
+            padding			: 0.5em;
+            border			: 0;
+            background-color: #f1f1f1;
+
+            list-style-type:none;
+        }
+        div#svg_list li:nth-child( 2n+0 ){
+            background-color: #e1e1e1;
+        }
+
+
+svg{
+	width:100%;
+}
+svg *{
+	font-family: Verdana, sans-serif;
+	font-style: normal;
+}
+
+tspan, textPath, rect{
+	cursor:pointer;
+}
+/*	font-family: Verdana, sans-serif;*/
+
+
+/* This part isn't necessary it's just a container for developing */
+div.unnecessary{
+	background-color: #ffffff;
+	width: 800px;
+	margin: 0 auto;
+	padding: 1em;
+}
+@media only screen and ( max-width: 842px ) {
+
+	div.unnecessary{
+		width: 95%;
+	}
+
+
+}
+
+
+
+</style>
+
+
+<script src="js/snap.svg-min.js"></script>
+
+<script>
+// This is the snap.svg script way of controlling the files.
+var s = Snap("#lmdfb_map");
+var svg_desc = "svg_description" // CSS selector for description div box
+var svg_list = "svg_list";
+
+
+// JSON object list for editing the SVG descriptions easily
+// opaque_id is the id of the element that gets its opacity turned down
+// No more than three list items!
+var svg = {
+    "json":[
+        {"name": "Automorphic",
+            "id":"#path4148",
+            "opaque_id":"#path4148",
+            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.",
+            "list": "Item1a, Item2a, Item3a",
+            "url": "#"},
+        {"name": "Automorphic2",
+            "id":"#tspan18235",
+            "opaque_id":"#path4148",
+            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.2",
+            "list": "Item1b, Item2b, Item3b",
+            "url": "#"},
+        {"name": "Automorphic3",
+            "id":"#tspan4014",
+            "opaque_id":"#path4148",
+            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.3",
+            "list": "Item1c, Item2c, Item3c",
+            "url": "#"},
+        {"name": "Base Change",
+            "id":"#tspan5706",
+            "opaque_id":"#tspan5706",
+            "description":"Base Change description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Cohomology",
+            "id":"#tspan37006",
+            "opaque_id":"#tspan37006",
+            "description":"Cohomology description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Convolution",
+            "id":"#tspan10971",
+            "opaque_id":"#tspan10971",
+            "description":"Convolution description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Converse Theorems",
+            "id":"#tspan37244",
+            "opaque_id":"#tspan37244",
+            "description":"Converse Theorems description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Deformation",
+            "id":"#textPath5407",
+            "opaque_id":"#textPath5407",
+            "description":"Deformation description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Galois Representations",
+            "id":"#rect36171",
+            "opaque_id":"#rect36171",
+            "description":"Galois Representations description here...1",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Galois Representations",
+            "id":"#tspan36212",
+            "opaque_id":"#rect36171",
+            "description":"Galois Representations description here...2",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Galois Representations",
+            "id":"#tspan36216",
+            "opaque_id":"#rect36171",
+            "description":"Galois Representations description here...3",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Hasse-Weil L-functions",
+            "id":"#tspan36692",
+            "opaque_id":"#tspan36692",
+            "description":"Hasse-Weil L-functions description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Integral Representations",
+            "id":"#tspan36454",
+            "opaque_id":"#tspan36454",
+            "description":"Integral Representations description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Lifting",
+            "id":"#tspan5650",
+            "opaque_id":"#tspan5650",
+            "description":"Lifting description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Tensoring",
+            "id":"#textPath37497",
+            "opaque_id":"#textPath37497",
+            "description":"Tensoring description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "L-Functions",
+            "id":"#rect4676",
+            "opaque_id":"#rect4676",
+            "description":"L-Functions description here...",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "L-Functions2",
+            "id":"#text37326",
+            "opaque_id":"#rect4676",
+            "description":"L-Functions description here...",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Motivic",
+            "id":"#path4674",
+            "opaque_id":"#path4674",
+            "description":"Motivic description here...1",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Motivic",
+            "id":"#tspan4698",
+            "opaque_id":"#path4674",
+            "description":"Motivic description here...2",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Motivic",
+            "id":"#tspan4016",
+            "opaque_id":"#path4674",
+            "description":"Motivic description here...3",
+            "list": "Item1, Item2, Item3",
+            "url": "#"},
+        {"name": "Modularity",
+            "id":"#tspan36967",
+            "opaque_id":"#tspan36967",
+            "description":"Modularity description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Perfectoid Spaces",
+            "id":"#tspan36924",
+            "opaque_id":"#tspan36924",
+            "description":"Perfectoid Spaces description here...",
+            "list": "",
+            "url": "#"},
+        {"name": "Shimura Varieties",
+            "id":"#text17131",
+            "opaque_id":"#text17131",
+            "description":"Shimura Varieties are algebraic varieties uniformized by the same linear algebraic groups that give rise to automorphic forms.",
+            "list": "",
+            "url": "http://www.lmfdb.org/knowledge/show/mf.elliptic.shimura_correspondence"}
+
+    ]
+}
+
+
+// This loads the SVG file and loops through the json objects to
+// create all of the interactive SVG elements.
+var tux = Snap.load("lmfdbmap1cropped2.svg", function ( loadedFragment ) {
+    s.append( loadedFragment );
+
+    for( i = 0; i < svg.json.length; i++){
+        s.select(svg.json[i].id).mouseover( svg_element_mouse_in(
+            svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list
+        ) );
+        s.select(svg.json[i].id).mouseout( svg_element_mouse_out(
+            svg.json[i].opaque_id
+        ) );
+        s.select(svg.json[i].id).click( svg_element_mouse_click(
+            svg.json[i].url
+        ) );
+        s.select(svg.json[i].id).dblclick( svg_element_mouse_dblclick(
+            svg.json[i].url
+        ) );
+    }
+
+
+} );
+
+
+/* These are the generic mouse action functions
+ */
+
+// Function for what happens when the mouse goes over an object.
+var svg_element_mouse_in = function ( svg_element_id, description_text, description_list ) {
+    return function() {
+        //Turns the opacity of target svg object down
+        s.select( svg_element_id ).attr({"fill-opacity": 0.7});
+
+        //Fills description DIV
+        document.getElementById( svg_desc ).innerHTML = "<p></p>";
+        document.getElementById( svg_desc ).innerHTML += "<p>" + description_text + "</p>";
+
+        //Fills related objects list/DIV
+        split_list = description_list.split(",");
+        var list_html = document.getElementById( svg_list );
+
+        if(split_list.length > 1){  //If more than one item, i.e. a single space.
+            list_html.innerHTML = "<p>Examples</p>";
+            list_html.innerHTML += "<ul>";
+            for(i = 0; i < split_list.length; i++){
+                list_html.innerHTML = list_html.innerHTML + "<li>" + split_list[i] + "</li>";
+            };
+            list_html.innerHTML += "</ul>";
+        }
+
+
+    };
+};
+
+// Function for what happens when the mouse stops being over an object.
+var svg_element_mouse_out = function ( svg_element_id ) {
+    return function() {
+        //Turns the opacity of target svg object back to full
+        s.select( svg_element_id ).attr({"fill-opacity": 1.0});
+
+        //Empties description/list DIV
+        document.getElementById( svg_desc ).innerHTML = "";
+        document.getElementById( svg_list ).innerHTML = "";
+    };
+};
+
+// Function for what happens when you click an object.
+var svg_element_mouse_click = function ( url ) {
+    return function() {
+        //Goes to URL on click
+        window.location.href = url;
+    };
+};
+
+// Function for what happens when you click an object.
+var svg_element_mouse_dblclick = function ( url ) {
+    return function() {
+        //Insert function for double clicking.
+    };
+};
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
