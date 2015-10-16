@@ -172,23 +172,9 @@ var clickID = "";
 var svg = {
     "json":[
         {"name": "Automorphic",
-            "id":"#path4148",
+            "id":"#path4148, #tspan4014, #tspan18235",
             "opaque_id":"#path4148",
             "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.",
-            "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Automorphic2",
-            "id":"#tspan18235",
-            "opaque_id":"#path4148",
-            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.2",
-            "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Automorphic3",
-            "id":"#tspan4014",
-            "opaque_id":"#path4148",
-            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.3",
             "list": "AItem1, Item1, Item1",
             "list_link": "first, second, third",
             "url": "#"},
@@ -228,23 +214,9 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "Galois Representations",
-            "id":"#rect36171",
+            "id":"#rect36171, #tspan36212, #tspan36216",
             "opaque_id":"#rect36171",
             "description":"Galois Representations description here...1",
-            "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Galois Representations",
-            "id":"#tspan36212",
-            "opaque_id":"#rect36171",
-            "description":"Galois Representations description here...2",
-            "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Galois Representations",
-            "id":"#tspan36216",
-            "opaque_id":"#rect36171",
-            "description":"Galois Representations description here...3",
             "list": "GItem1, Item1, Item1",
             "list_link": "first, second, third",
             "url": "#"},
@@ -277,37 +249,16 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "L-Functions",
-            "id":"#rect4676",
-            "opaque_id":"#rect4676",
-            "description":"L-Functions description here...",
-            "list": "LItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "L-Functions2",
-            "id":"#text37326",
+            "id":"#rect4676, #text37326",
             "opaque_id":"#rect4676",
             "description":"L-Functions description here...",
             "list": "LItem1, Item1, Item1",
             "list_link": "first, second, third",
             "url": "#"},
         {"name": "Motivic",
-            "id":"#path4674",
+            "id":"#path4674, #tspan4016, #tspan4698",
             "opaque_id":"#path4674",
             "description":"Motivic description here...1",
-            "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Motivic",
-            "id":"#tspan4698",
-            "opaque_id":"#path4674",
-            "description":"Motivic description here...2",
-            "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Motivic",
-            "id":"#tspan4016",
-            "opaque_id":"#path4674",
-            "description":"Motivic description here...3",
             "list": "MItem1, Item1, Item1",
             "list_link": "first, second, third",
             "url": "#"},
@@ -342,19 +293,27 @@ var svg = {
 var tux = Snap.load("lmfdbmap1cropped4.svg", function ( loadedFragment ) {
     s.append( loadedFragment );
 
+    var count;
     for( i = 0; i < svg.json.length; i++){
-        s.select(svg.json[i].id).mouseover( svg_element_mouse_in(
-            svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link
-        ) );
-        s.select(svg.json[i].id).mouseout( svg_element_mouse_out(
-            svg.json[i].opaque_id
-        ) );
-        s.select(svg.json[i].id).click( svg_element_mouse_click(
-            svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link, svg.json[i].url
-        ) );
-        s.select(svg.json[i].id).dblclick( svg_element_mouse_dblclick(
-            svg.json[i].url
-        ) );
+
+        //This allows you to have multiple elements that trigger the description text
+        count = svg.json[i].id.split(",");
+        //console.log(count, count.length);
+
+        for(var j = 0; j < count.length; j++) {
+            s.select(count[j]).mouseover( svg_element_mouse_in(
+                svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link
+            ) );
+            s.select(count[j]).mouseout( svg_element_mouse_out(
+                svg.json[i].opaque_id
+            ) );
+            s.select(count[j]).click( svg_element_mouse_click(
+                svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link, svg.json[i].url
+            ) );
+            s.select(count[j]).dblclick( svg_element_mouse_dblclick(
+                svg.json[i].url
+            ) );
+        }
     }
 
     //Optional deselect function
@@ -373,12 +332,7 @@ var tux = Snap.load("lmfdbmap1cropped4.svg", function ( loadedFragment ) {
 
 } );
 
-// Function for what happens when the mouse goes over an object.
-
-
-/* These are the generic mouse action functions
- */
-
+// This function fills the description and examples boxes with information.
 var fillNewInformation = function ( description_text, description_list, description_list_link) {
   //Fills description DIV
   document.getElementById( svg_desc ).innerHTML = "<p></p>";
