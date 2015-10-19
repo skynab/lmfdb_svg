@@ -250,7 +250,7 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "L-Functions",
-            "id":"#rect4676, #text37326, #tspan37328",
+            "id":"#rect4676, #tspan37328",
             "opaque_id":"#rect4676",
             "description":"L-Functions description here...",
             "list": "LItem1, Item1, Item1",
@@ -328,25 +328,12 @@ var tux = Snap.load("lmfdbmap1cropped1.svg", function ( loadedFragment ) {
                 fillNewInformation( "", "", "");
             }
         });
-       // jQuery methods go here...
-       /*
-        $('html').click(function() {
-            fillNewInformation( "", "", "");
-        });
-        */
     });
 
 
 
 
 } );
-/*
-$('#menucontainer').click(function(event){
-
-    fillNewInformation( "", "", "");
-    event.stopPropagation();
-
-});*/
 
 
 // This function fills the description and examples boxes with information.
@@ -428,7 +415,6 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
           fillNewInformation( description_text, description_list, description_list_link);
 
         }
-        //event.stopPropagation();
     };
 };
 
