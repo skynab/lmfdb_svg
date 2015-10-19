@@ -177,7 +177,7 @@ var svg = {
             "opaque_id":"#path4148",
             "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.",
             "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Base Change",
             "id":"#tspan5706",
@@ -219,7 +219,7 @@ var svg = {
             "opaque_id":"#rect36171",
             "description":"Galois Representations description here...1",
             "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Hasse-Weil L-functions",
             "id":"#tspan36692",
@@ -254,14 +254,14 @@ var svg = {
             "opaque_id":"#rect4676",
             "description":"L-Functions description here...",
             "list": "LItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Motivic",
             "id":"#path4674, #tspan4016, #tspan4698",
             "opaque_id":"#path4674",
             "description":"Motivic description here...1",
             "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Modularity",
             "id":"#tspan36967",
@@ -278,8 +278,8 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "Shimura Varieties",
-            "id":"#text17131",
-            "opaque_id":"#text17131",
+            "id":"#tspan17133",
+            "opaque_id":"#tspan17133",
             "description":"Shimura Varieties are algebraic varieties uniformized by the same linear algebraic groups that give rise to automorphic forms.",
             "list": "",
             "list_link": "",
@@ -317,14 +317,21 @@ var tux = Snap.load("lmfdbmap1cropped1.svg", function ( loadedFragment ) {
             ) );
         }
     }
+    //Gets rid of the extra ", " at the end.
     IDList = IDList.substring(0,IDList.length - 2);
-    console.log(IDList);
 
+
+    // This jQuery function clears the infoboxes and selection when not clicking
+    // a mathematical object in the SVG.
     $(document).ready(function(){
 
         $(document).click(function(event) {
             if(!$(event.target).is(IDList)) {
                 clickSwitch = 0;
+                if(clickID != ""){
+                    s.select( clickID ).attr({"fill-opacity": 1.0});
+                    clickID = "";
+                }
                 fillNewInformation( "", "", "");
             }
         });
