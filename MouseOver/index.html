@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dual Info Style</title>
+    <title>Mouse in/out Style</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <!-- SVG + Description Boxes -->
     <div id="lmdfb_map"></div>
 	<div id="svg_description"></div>
-    <div id="svg_list"></div>
+    <div id="svg_examples"></div>
 </div>
 
 <!--
@@ -70,7 +70,7 @@ div#svg_description p:last-child{
 
 
 
-div#svg_list{
+div#svg_examples{
     /*background-color: pink;*/
     position: absolute;
     top: 76%;
@@ -86,29 +86,29 @@ div#svg_list{
 }
 
 /*
-div#svg_list{
+div#svg_examples{
     background-color: rgba(240, 240, 240, 0.1);
 }*/
-    div#svg_list p{
+    div#svg_examples p{
         margin			: 5px 0;
         padding			: 0;
         border			: 0;
         font-weight     : 600;
     }
 
-    div#svg_list ul{
+    div#svg_examples ul{
         margin			: 0;
         padding			: 0em;
         border			: 0;
         list-style-type:none;
     }
-    div#svg_list a{
+    div#svg_examples a{
         text-decoration: none;
         color: #111;
     }
 
 
-        div#svg_list li{
+        div#svg_examples li{
             margin			: 0;
             padding			: 0.5em;
             border			: 0;
@@ -116,7 +116,7 @@ div#svg_list{
 
             list-style-type:none;
         }
-        div#svg_list a:nth-child(2n) > li{
+        div#svg_examples a:nth-child(2n) > li{
             background-color: #E1E1E1;
         }
 
@@ -163,7 +163,7 @@ div.unnecessary{
 // This is the snap.svg script way of controlling the files.
 var s = Snap("#lmdfb_map");
 var svg_desc = "svg_description" // CSS selector for description div box
-var svg_list = "svg_list";
+var svg_examples = "svg_examples";
 var clickSwitch = 0;
 var clickID = "";
 
@@ -352,7 +352,7 @@ var fillNewInformation = function ( description_text, description_list, descript
   //Fills related objects list/DIV
   split_list = description_list.split(",");
   split_list_links = description_list_link.split(",");
-  var list_html = document.getElementById( svg_list );
+  var list_html = document.getElementById( svg_examples );
 
   if(split_list.length > 1){  //If more than one item, i.e. a single space.
       list_html.innerHTML = "<p>Examples</p>";

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dual Info Style</title>
+    <title>Click on/off Style</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <!-- SVG + Description Boxes -->
     <div id="lmdfb_map"></div>
 	<div id="svg_description"></div>
-    <div id="svg_list"></div>
+    <div id="svg_examples"></div>
 </div>
 
 <!--
@@ -70,7 +70,7 @@ div#svg_description p:last-child{
 
 
 
-div#svg_list{
+div#svg_examples{
     /*background-color: pink;*/
     position: absolute;
     top: 76%;
@@ -86,29 +86,29 @@ div#svg_list{
 }
 
 /*
-div#svg_list{
+div#svg_examples{
     background-color: rgba(240, 240, 240, 0.1);
 }*/
-    div#svg_list p{
+    div#svg_examples p{
         margin			: 5px 0;
         padding			: 0;
         border			: 0;
         font-weight     : 600;
     }
 
-    div#svg_list ul{
+    div#svg_examples ul{
         margin			: 0;
         padding			: 0em;
         border			: 0;
         list-style-type:none;
     }
-    div#svg_list a{
+    div#svg_examples a{
         text-decoration: none;
         color: #111;
     }
 
 
-        div#svg_list li{
+        div#svg_examples li{
             margin			: 0;
             padding			: 0.5em;
             border			: 0;
@@ -116,7 +116,7 @@ div#svg_list{
 
             list-style-type:none;
         }
-        div#svg_list a:nth-child(2n) > li{
+        div#svg_examples a:nth-child(2n) > li{
             background-color: #E1E1E1;
         }
 
@@ -157,12 +157,13 @@ div.unnecessary{
 
 
 <script src="js/snap.svg-min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
 // This is the snap.svg script way of controlling the files.
 var s = Snap("#lmdfb_map");
 var svg_desc = "svg_description" // CSS selector for description div box
-var svg_list = "svg_list";
+var svg_examples = "svg_examples";
 var clickSwitch = 0;
 var clickID = "";
 
@@ -172,25 +173,11 @@ var clickID = "";
 var svg = {
     "json":[
         {"name": "Automorphic",
-            "id":"#path4148",
+            "id":"#path4148, #tspan4014, #tspan18235",
             "opaque_id":"#path4148",
             "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.",
             "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Automorphic2",
-            "id":"#tspan18235",
-            "opaque_id":"#path4148",
-            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.2",
-            "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Automorphic3",
-            "id":"#tspan4014",
-            "opaque_id":"#path4148",
-            "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.3",
-            "list": "AItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Base Change",
             "id":"#tspan5706",
@@ -228,25 +215,11 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "Galois Representations",
-            "id":"#rect36171",
+            "id":"#rect36171, #tspan36212, #tspan36216",
             "opaque_id":"#rect36171",
             "description":"Galois Representations description here...1",
             "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Galois Representations",
-            "id":"#tspan36212",
-            "opaque_id":"#rect36171",
-            "description":"Galois Representations description here...2",
-            "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Galois Representations",
-            "id":"#tspan36216",
-            "opaque_id":"#rect36171",
-            "description":"Galois Representations description here...3",
-            "list": "GItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Hasse-Weil L-functions",
             "id":"#tspan36692",
@@ -277,39 +250,18 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "L-Functions",
-            "id":"#rect4676",
+            "id":"#rect4676, #tspan37328",
             "opaque_id":"#rect4676",
             "description":"L-Functions description here...",
             "list": "LItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "L-Functions2",
-            "id":"#text37326",
-            "opaque_id":"#rect4676",
-            "description":"L-Functions description here...",
-            "list": "LItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Motivic",
-            "id":"#path4674",
+            "id":"#path4674, #tspan4016, #tspan4698",
             "opaque_id":"#path4674",
             "description":"Motivic description here...1",
             "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Motivic",
-            "id":"#tspan4698",
-            "opaque_id":"#path4674",
-            "description":"Motivic description here...2",
-            "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
-            "url": "#"},
-        {"name": "Motivic",
-            "id":"#tspan4016",
-            "opaque_id":"#path4674",
-            "description":"Motivic description here...3",
-            "list": "MItem1, Item1, Item1",
-            "list_link": "first, second, third",
+            "list_link": "#first, #second, #third",
             "url": "#"},
         {"name": "Modularity",
             "id":"#tspan36967",
@@ -326,8 +278,8 @@ var svg = {
             "list_link": "",
             "url": "#"},
         {"name": "Shimura Varieties",
-            "id":"#text17131",
-            "opaque_id":"#text17131",
+            "id":"#tspan17133",
+            "opaque_id":"#tspan17133",
             "description":"Shimura Varieties are algebraic varieties uniformized by the same linear algebraic groups that give rise to automorphic forms.",
             "list": "",
             "list_link": "",
@@ -339,46 +291,58 @@ var svg = {
 
 // This loads the SVG file and loops through the json objects to
 // create all of the interactive SVG elements.
-var tux = Snap.load("lmfdbmap1cropped4.svg", function ( loadedFragment ) {
+var tux = Snap.load("lmfdbmap1cropped1.svg", function ( loadedFragment ) {
     s.append( loadedFragment );
 
+    var count, IDList = "";
     for( i = 0; i < svg.json.length; i++){
-        s.select(svg.json[i].id).mouseover( svg_element_mouse_in(
-            svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link
-        ) );
-        s.select(svg.json[i].id).mouseout( svg_element_mouse_out(
-            svg.json[i].opaque_id
-        ) );
-        s.select(svg.json[i].id).click( svg_element_mouse_click(
-            svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link, svg.json[i].url
-        ) );
-        s.select(svg.json[i].id).dblclick( svg_element_mouse_dblclick(
-            svg.json[i].url
-        ) );
-    }
 
-    //Optional deselect function
-    //FIXME
-    /*
-    s.select( ":not(#rect3163)" ).click( function() {
+        //This allows you to have multiple elements that trigger the description text
+        count = svg.json[i].id.split(",");
+        //This catalogs the list of all clickable elements
+        IDList += svg.json[i].id + ", ";
 
-            s.select( clickID ).attr({"fill-opacity": 1.0});
-            clickID = "";
-            clickSwitch = 0;
-            fillNewInformation( "", "", "");
+        for(var j = 0; j < count.length; j++) {
+            s.select(count[j]).mouseover( svg_element_mouse_in(
+                svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link
+            ) );
+            s.select(count[j]).mouseout( svg_element_mouse_out(
+                svg.json[i].opaque_id
+            ) );
+            s.select(count[j]).click( svg_element_mouse_click(
+                svg.json[i].opaque_id, svg.json[i].description, svg.json[i].list, svg.json[i].list_link, svg.json[i].url
+            ) );
+            s.select(count[j]).dblclick( svg_element_mouse_dblclick(
+                svg.json[i].url
+            ) );
         }
-    );
-*/
+    }
+    //Gets rid of the extra ", " at the end.
+    IDList = IDList.substring(0,IDList.length - 2);
+
+
+    // This jQuery function clears the infoboxes and selection when not clicking
+    // a mathematical object in the SVG.
+    $(document).ready(function(){
+
+        $(document).click(function(event) {
+            if(!$(event.target).is(IDList)) {
+                clickSwitch = 0;
+                if(clickID != ""){
+                    s.select( clickID ).attr({"fill-opacity": 1.0});
+                    clickID = "";
+                }
+                fillNewInformation( "", "", "");
+            }
+        });
+    });
+
+
 
 
 } );
 
-// Function for what happens when the mouse goes over an object.
-
-
-/* These are the generic mouse action functions
- */
-
+// This function fills the description and examples boxes with information.
 var fillNewInformation = function ( description_text, description_list, description_list_link) {
   //Fills description DIV
   document.getElementById( svg_desc ).innerHTML = "<p></p>";
@@ -387,7 +351,7 @@ var fillNewInformation = function ( description_text, description_list, descript
   //Fills related objects list/DIV
   split_list = description_list.split(",");
   split_list_links = description_list_link.split(",");
-  var list_html = document.getElementById( svg_list );
+  var list_html = document.getElementById( svg_examples );
 
   if(split_list.length > 1){  //If more than one item, i.e. a single space.
       list_html.innerHTML = "<p>Examples</p>";
@@ -432,7 +396,7 @@ var svg_element_mouse_out = function ( svg_element_id ) {
         if( clickSwitch == 0 ){
           //Empties description/list DIV
           document.getElementById( svg_desc ).innerHTML = "";
-          document.getElementById( svg_list ).innerHTML = "";
+          document.getElementById( svg_examples ).innerHTML = "";
         }
         */
     };
@@ -449,7 +413,7 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
           fillNewInformation( description_text, description_list, description_list_link);
 
         } else if(clickSwitch == 1 && clickID == svg_element_id) {
-          clickSwitch = 0
+          clickSwitch = 0;
           fillNewInformation( "", "", "");
 
         } else if( clickSwitch == 1 && clickID != svg_element_id) {
@@ -477,7 +441,6 @@ var svg_element_mouse_dblclick = function ( url ) {
 
 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 
