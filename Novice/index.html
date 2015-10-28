@@ -1,8 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mouse in/out Style</title>
+    <title>Novice</title>
     <meta charset="utf-8"/>
+
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="http://www.lmfdb.org/static/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.lmfdb.org/static/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="http://www.lmfdb.org/static/lmfdb.js"></script>
+    <script type="text/javascript" src="http://www.lmfdb.org/static/showdown.min.js"></script>
+
+    <script type="text/javascript" src="http://www.lmfdb.org/static/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="http://www.lmfdb.org/static/jquery.dataTables.plugins.js"></script>
+    <script type="text/javascript" src="http://www.lmfdb.org/static/jquery-ui-1.8.14.custom.min.js"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js","asciimath2jax.js","MathMenu.js","MathZoom.js",
+                   "TeX/autobold.js" ,"TeX/noErrors.js","TeX/noUndefined.js" ],
+      jax: ["input/TeX","input/AsciiMath","output/HTML-CSS"],
+      TeX: {
+       Macros: {
+        C: '{\\mathbb{C}}',
+        R: '{\\mathbb{R}}',
+        Q: '{\\mathbb{Q}}',
+        Z: '{\\mathbb{Z}}',
+        F: '{\\mathbb{F}}',
+        H: '{\\mathbb{H}}',
+        HH: '{\\mathcal{H}}',
+        integers: '{\\mathcal{O}}',
+        SL: '{\\textrm{SL}}',
+        GL: '{\\textrm{GL}}',
+        PSL: '{\\textrm{PSL}}',
+        PGL: '{\\textrm{PGL}}',
+        Sp: '{\\textrm{Sp}}',
+        GSp: '{\\textrm{GSp}}',
+        Gal: '{\\mathop{\\rm Gal}}',
+        Aut: '{\\mathop{\\rm Aut}}',
+        Sym: '{\\mathop{\\rm Sym}}',
+        End: '{\\mathop{\\rm End}}',
+        Reg: '{\\mathop{\\rm Reg}}',
+        Ord: '{\\mathop{\\rm Ord}}',
+        sgn: '{\\mathop{\\rm sgn}}',
+        trace: '{\\mathop{\\rm trace}}',
+        Res: '{\\mathop{\\rm Res}}',
+        ideal: ['{\\mathfrak{ #1 }}',1],
+        classgroup: ['{Cl(#1)}',1],
+        modstar: ['{\\left( #1/#2 \\right)^\\times}',2],
+       },
+      },
+      tex2jax: {
+        inlineMath: [['$','$'],["\\(","\\)"]],
+        processEscapes: true,
+      },
+      asciimath2jax: { delimiters: [['#(',')#'], ['#[',']#']] },
+      "HTML-CSS": { scale: 85 },
+      menuSettings: { zscale: "150%", zoom: "Double-Click", context: "Browser" }
+
+    });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+
 </head>
 
 <body>
@@ -10,6 +68,7 @@
 <div class="unnecessary">
 <h2>The LMFDB universe.</h2>
 
+<h3 kwargs="" knowl="lfunction.degree" title="Degree of an L-function [lfunction.degree]">Knowl Example</h3>
 
 <div id="svg_main">
     <!-- SVG + Description Boxes -->
@@ -156,10 +215,10 @@ div.unnecessary{
 
 </style>
 
-<!-- <script src="js/lmfdb.js"></script> -->
-<script src="js/snap.svg-min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/lmfdb.js"></script>
+<script src="js/snap.svg-min.js"></script>
 <script>
 // This is the snap.svg script way of controlling the files.
 var s = Snap("#lmdfb_map");
@@ -179,13 +238,6 @@ var svg = {
             "description":"Automorphic forms are L_2 functions on certain double coset spaces of the adelic points of a linear algebraic group.",
             "list": "AItem1, Item1, Item1",
             "list_link": "#first, #second, #third",
-            "url": "#"},
-        {"name": "operation",
-            "id":"#textPath5714",
-            "opaque_id":"#textPath5714",
-            "description":"Operation description here...",
-            "list": "",
-            "list_link": "",
             "url": "#"},
         {"name": "Cohomology",
             "id":"#tspan37006",
@@ -236,20 +288,6 @@ var svg = {
             "list": "",
             "list_link": "",
             "url": "#"},
-        {"name": "Transfer",
-            "id":"#textPath3211",
-            "opaque_id":"#textPath3211",
-            "description":"Transfer description here...",
-            "list": "",
-            "list_link": "",
-            "url": "#"},
-        {"name": "Schur functors",
-            "id":"#textPath4145",
-            "opaque_id":"#textPath4145",
-            "description":"Schur functors description here...",
-            "list": "",
-            "list_link": "",
-            "url": "#"},
         {"name": "L-Functions",
             "id":"#rect4676, #tspan37328",
             "opaque_id":"#rect4676",
@@ -264,27 +302,48 @@ var svg = {
             "list": "MItem1, Item1, Item1",
             "list_link": "#first, #second, #third",
             "url": "#"},
-        {"name": "Modularity", //FIXME
-            "id":"#text36965",
+        {"name": "Modularity",
+            "id":"#tspan36967",
             "opaque_id":"#text36965",
             "description":"Modularity description here...",
             "list": "",
             "list_link": "",
             "url": "#"},
-        {"name": "Perfectoid Spaces", //FIXME
+        {"name": "Operation",
+            "id":"#textPath5714",
+            "opaque_id":"#textPath5714",
+            "description":"Operation description here...",
+            "list": "",
+            "list_link": "",
+            "url": "#"},
+        {"name": "Perfectoid Spaces",
             "id":"#tspan36924",
             "opaque_id":"#tspan36924",
             "description":"Perfectoid Spaces description here...",
             "list": "",
             "list_link": "",
             "url": "#"},
+        {"name": "Schur functors",
+            "id":"#textPath4145",
+            "opaque_id":"#textPath4145",
+            "description":"Schur functors description here...",
+            "list": "",
+            "list_link": "",
+            "url": "#"},
         {"name": "Shimura Varieties",
-            "id":"#text17131, #textPath17141, #tspan17133",
+            "id":"#tspan17133",
             "opaque_id":"#textPath17141",
             "description":"Shimura Varieties are algebraic varieties uniformized by the same linear algebraic groups that give rise to automorphic forms.",
             "list": "",
             "list_link": "",
-            "url": "http://www.lmfdb.org/knowledge/show/mf.elliptic.shimura_correspondence"}
+            "url": "http://www.lmfdb.org/knowledge/show/mf.elliptic.shimura_correspondence"},
+        {"name": "Transfer",
+            "id":"#textPath3211",
+            "opaque_id":"#textPath3211",
+            "description":"Transfer description here...",
+            "list": "",
+            "list_link": "",
+            "url": "#"}
 
     ]
 }
