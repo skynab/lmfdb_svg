@@ -408,9 +408,16 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
           clickSwitch = 1;
           clickID = svg_element_id;
           s.select( svg_element_id ).attr({"fill-opacity": 0.6});
+          fillNewInformation( description_text, description_list, description_list_link);
 
         } else if(clickSwitch == 1 && clickID == svg_element_id) {
-          window.location.href = url;
+
+            clickSwitch = 0;
+            s.select( clickID ).attr({"fill-opacity": 1.0});
+            clickID = "";
+            fillNewInformation( "", "", "");
+
+            //window.location.href = url;
 
         } else if( clickSwitch == 1 && clickID != svg_element_id) {
 
@@ -430,7 +437,7 @@ var svg_element_mouse_click = function (  svg_element_id, description_text, desc
 var svg_element_mouse_dblclick = function ( url ) {
     return function() {
         //Goes to URL on click
-        window.location.href = url;
+        //window.location.href = url;
     };
 };
 
