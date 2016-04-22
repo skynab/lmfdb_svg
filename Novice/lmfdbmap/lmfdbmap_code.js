@@ -13,7 +13,7 @@ var svg_element_currently_clicked_ID = "";
 
 // This loads the SVG file and loops through the json objects to
 // create all of the interactive SVG elements.
-var tux = Snap.load("lmfdbmap.svg", function ( loadedFragment )
+var tux = Snap.load("lmfdbmap/lmfdbmap.svg", function ( loadedFragment )
 {
     s.append( loadedFragment );
 
